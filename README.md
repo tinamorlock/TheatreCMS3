@@ -954,3 +954,15 @@ After the model is created, scaffold the CRUD pages for this model (Use Visual S
             border: 0px solid;
             outline: 3px solid var(--secondary-color);
         }
+### CastMember photo storage and retrieval
+We want to have images for the CastMember model.  To accomplish this, we want to allow users to upload files from their file system.  Then, in the controller, the uploaded image should be converted into a byte array (byte[]) and stored in the database.  The byte[] representing the photo should be able to be retrieved from the database and converted back into an image where it can be displayed on View.
+
+Create a method in the CastMember Controller that has a parameter for an uploaded photo and converts that photo into a byte[].  Add a new file input field to the Create and Edit Views so that images can be uploaded to the controller.  Use this method in the CastMember Create and Edit methods to convert the uploaded image to a byte[].  Assign the byte[] to the CastMember model being created or edited and save it to the database.
+
+There should also be a way to retrieve the byte[] from an entity in the CastMember table.  You have two options:
+1: Create a method in the CastMember controller that takes the Cast Member Id.  This method should use the Id to find that CastMember, get its stored byte[], and return the file of that converted photo.
+2: Configure an img tag to accept an image format.  Use Razor syntax to get the Model's byte array and convert it back into an image so that the img tag can render it.
+
+Use your method to display the photos of CastMembers on the CastMember index page. 
+#### Screenshots
+![image](https://user-images.githubusercontent.com/117326004/229183990-7a140401-609f-44b5-abc8-cc75f908d390.png)
